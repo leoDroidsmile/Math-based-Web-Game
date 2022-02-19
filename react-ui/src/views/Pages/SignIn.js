@@ -14,7 +14,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 // Assets
-import signInImage from "assets/img/signInImage.png";
+import signInImage from "assets/img/SidebarHelpImage.png";
 
 import { useAuth } from "../../auth-context/auth.context";
 import AuthApi from "../../api/auth";
@@ -128,7 +128,7 @@ function SignIn() {
               mt={{ md: "150px", lg: "80px" }}
             >
               <Heading color={titleColor} fontSize="32px" mt="10px" mb="10px">
-              React Laravel Purity
+              Math-based Game
             </Heading>
               <Text
                 mb="36px"
@@ -221,9 +221,9 @@ function SignIn() {
                 maxW="100%"
                 mt="0px"
               >
-                <Text color={textColor} fontWeight="medium">
+                {/* <Text color={textColor} fontWeight="medium">
                   Open-source Full-Stack Seed Project
-                </Text>
+                </Text> */}
               </Flex>
             </Flex>
           }

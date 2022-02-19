@@ -142,7 +142,7 @@ export default function AuthNavbar(props) {
         {brand}
         <Box
           ms={{ base: "auto", lg: "0px" }}
-          display={{ base: "flex", lg: "none" }}
+          display={{ base: "flex", lg: "flex" }}
         >
           <SidebarResponsive
             logoText={props.logoText}
@@ -153,7 +153,7 @@ export default function AuthNavbar(props) {
           />
         </Box>
         {linksAuth}
-        <Link target="_blank" 
+        {/* <Link target="_blank" 
           href="https://appseed.us/product/laravel-react-purity-dashboard">
           <Button
             bg={bgButton}
@@ -169,7 +169,7 @@ export default function AuthNavbar(props) {
           >
             Free Download
           </Button>
-        </Link>
+        </Link> */}
       </Flex>
     </Flex>
   );

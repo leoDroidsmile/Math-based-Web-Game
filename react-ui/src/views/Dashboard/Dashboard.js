@@ -121,7 +121,7 @@ export default function Dashboard() {
                   </StatLabel>
                   <Flex style={{ marginTop: "10px"}}>
                     <StatNumber >
-                      <ReadMoreText text="Just Following up on my voicemail regarding the Aritcles of Incorporation for your client. "/>
+                      <ReadMoreText text="Just Following up on my voicemail regarding the Aritcles of Incorporation for your client. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."/>
                     </StatNumber>
                   </Flex>
                 </Stat>               
@@ -148,7 +148,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex style={{ marginTop: "10px"}}>
                   <StatNumber fontSize="sm" color={textColor} paddingRight="20%" >
-                  <ReadMoreText text=" Word on the street is that tonight's show will be yur hightest grossing show yet. Door sales will"/>
+                  <ReadMoreText text=" Word on the street is that tonight's show will be yur hightest grossing show yet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."/>
                    
                   </StatNumber>
                  </Flex>
@@ -186,7 +186,7 @@ export default function Dashboard() {
                   </StatLabel>
                   <Flex style={{ marginTop: "10px"}}>
                     <StatNumber fontSize="sm"  color={textColor} paddingRight="20%">
-                    <ReadMoreText text="Hey Mate, bad news. Some of the merch from the truck was stolen at last night's gig."/>
+                    <ReadMoreText text="Hey Mate, bad news. Some of the merch from the truck was stolen at last night's gig. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."/>
                       
                     </StatNumber>
                   </Flex>
@@ -215,7 +215,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex style={{ marginTop: "10px"}}>
                   <StatNumber fontSize="sm" color={textColor} paddingRight="20%" variant="solid">
-                  <ReadMoreText text=" Hey: Good news about last nights gig. We booked again tonight on your day off. No costs for gear setup and 1/2 price venue rental!"/>
+                  <ReadMoreText text=" Hey: Good news about last nights gig. We booked again tonight on your day off. No costs for gear setup and 1/2 price venue rental! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."/>
                    
                   </StatNumber>
                  

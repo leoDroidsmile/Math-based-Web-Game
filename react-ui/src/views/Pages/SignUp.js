@@ -133,7 +133,7 @@ function SignUp() {
             textAlign="center"
             mb="22px"
           >
-            React Laravel Purity
+            Math-based Game
           </Text>
           <Text
             fontSize="lg"
@@ -238,9 +238,9 @@ function SignUp() {
             maxW="100%"
             mt="0px"
           >
-            <Text color={textColor} fontWeight="medium">
+            {/* <Text color={textColor} fontWeight="medium">
               Open-source Full-Stack Seed Project 
-            </Text>
+            </Text> */}
           </Flex>
         </Flex>
       </Flex>
