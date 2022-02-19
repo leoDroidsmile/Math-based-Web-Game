@@ -4,7 +4,7 @@ function PanelContent(props) {
   const styles = useStyleConfig("PanelContent", { variant });
   // Pass the computed styles into the `__css` prop
   return (
-    <Box __css={styles} {...rest}>
+    <Box>
       {children}
     </Box>
   );

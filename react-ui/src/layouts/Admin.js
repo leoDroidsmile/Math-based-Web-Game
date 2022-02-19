@@ -26,50 +26,50 @@ export default function Dashboard(props) {
   const getRoute = () => {
     return window.location.pathname !== "/admin/full-screen-maps";
   };
-  const getActiveRoute = (routes) => {
-    let activeRoute = "Default Brand Text";
-    for (let i = 0; i < routes.length; i++) {
-      if (routes[i].collapse) {
-        let collapseActiveRoute = getActiveRoute(routes[i].views);
-        if (collapseActiveRoute !== activeRoute) {
-          return collapseActiveRoute;
-        }
-      } else if (routes[i].category) {
-        let categoryActiveRoute = getActiveRoute(routes[i].views);
-        if (categoryActiveRoute !== activeRoute) {
-          return categoryActiveRoute;
-        }
-      } else {
-        if (
-          window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1
-        ) {
-          return routes[i].name;
-        }
-      }
-    }
-    return activeRoute;
-  };
+  // const getActiveRoute = (routes) => {
+  //   let activeRoute = "Default Brand Text";
+  //   for (let i = 0; i < routes.length; i++) {
+  //     if (routes[i].collapse) {
+  //       let collapseActiveRoute = getActiveRoute(routes[i].views);
+  //       if (collapseActiveRoute !== activeRoute) {
+  //         return collapseActiveRoute;
+  //       }
+  //     } else if (routes[i].category) {
+  //       let categoryActiveRoute = getActiveRoute(routes[i].views);
+  //       if (categoryActiveRoute !== activeRoute) {
+  //         return categoryActiveRoute;
+  //       }
+  //     } else {
+  //       if (
+  //         window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1
+  //       ) {
+  //         return routes[i].name;
+  //       }
+  //     }
+  //   }
+  //   return activeRoute;
+  // };
   // This changes navbar state(fixed or not)
-  const getActiveNavbar = (routes) => {
-    let activeNavbar = false;
-    for (let i = 0; i < routes.length; i++) {
-      if (routes[i].category) {
-        let categoryActiveNavbar = getActiveNavbar(routes[i].views);
-        if (categoryActiveNavbar !== activeNavbar) {
-          return categoryActiveNavbar;
-        }
-      } else {
-        if (
-          window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1
-        ) {
-          if (routes[i].secondaryNavbar) {
-            return routes[i].secondaryNavbar;
-          }
-        }
-      }
-    }
-    return activeNavbar;
-  };
+  // const getActiveNavbar = (routes) => {
+  //   let activeNavbar = false;
+  //   for (let i = 0; i < routes.length; i++) {
+  //     if (routes[i].category) {
+  //       let categoryActiveNavbar = getActiveNavbar(routes[i].views);
+  //       if (categoryActiveNavbar !== activeNavbar) {
+  //         return categoryActiveNavbar;
+  //       }
+  //     } else {
+  //       if (
+  //         window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1
+  //       ) {
+  //         if (routes[i].secondaryNavbar) {
+  //           return routes[i].secondaryNavbar;
+  //         }
+  //       }
+  //     }
+  //   }
+  //   return activeNavbar;
+  // };
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.collapse) {
@@ -95,31 +95,18 @@ export default function Dashboard(props) {
   document.documentElement.dir = "ltr";
   // Chakra Color Mode
   return (
-    <ChakraProvider theme={theme} resetCss={false}>
+    <ChakraProvider theme={theme} resetCss={false} >
       <Sidebar
         routes={routes}
-        logoText={"PURITY UI DASHBOARD"}
         display="none"
-        sidebarVariant={sidebarVariant}
-        {...rest}
       />
       <MainPanel
         ref={mainPanel}
         w={{
           base: "100%",
-          xl: "calc(100% - 275px)",
+          xl: "calc(100% - 285px)",
         }}
-      >
-        <Portal>
-          <AdminNavbar
-            onOpen={onOpen}
-            logoText={"PURITY UI DASHBOARD"}
-            brandText={getActiveRoute(routes)}
-            secondary={getActiveNavbar(routes)}
-            fixed={fixed}
-            {...rest}
-          />
-        </Portal>
+        backgroundColor="gray.200">
         {getRoute() ? (
           <PanelContent>
             <PanelContainer>
@@ -130,25 +117,7 @@ export default function Dashboard(props) {
             </PanelContainer>
           </PanelContent>
         ) : null}
-        <Footer />
-        <Portal>
-          <FixedPlugin
-            secondary={getActiveNavbar(routes)}
-            fixed={fixed}
-            onOpen={onOpen}
-          />
-        </Portal>
-        <Configurator
-          secondary={getActiveNavbar(routes)}
-          isOpen={isOpen}
-          onClose={onClose}
-          isChecked={fixed}
-          onSwitch={(value) => {
-            setFixed(value);
-          }}
-          onOpaque={() => setSidebarVariant("opaque")}
-          onTransparent={() => setSidebarVariant("transparent")}
-        />
+        {/* <Footer /> */}
       </MainPanel>
     </ChakraProvider>
   );

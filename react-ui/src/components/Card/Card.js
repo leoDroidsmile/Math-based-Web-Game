@@ -4,7 +4,7 @@ function Card(props) {
   const styles = useStyleConfig("Card", { variant });
   // Pass the computed styles into the `__css` prop
   return (
-    <Box __css={styles} {...rest}>
+    <Box __css={styles} {...rest} style={{ position : "relative"}}>
       {children}
     </Box>
   );
