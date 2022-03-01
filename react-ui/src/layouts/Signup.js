@@ -8,6 +8,8 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import routes from "routes.js";
 import theme from "theme/theme.js";
 
+import Sidebar from "components/Sidebar/Sidebar.js";
+
 export default function Pages(props) {
   const { ...rest } = props;
   // ref for the wrapper div
@@ -96,13 +98,13 @@ export default function Pages(props) {
           <Box ref={wrapper} w="100%">
             <Switch>
               {getRoutes(routes)}
-              <Redirect from="/auth" to="/auth/sigin" />
+              <Redirect from="/auth" to="/auth/signup" />
             </Switch>
           </Box>
         </Box>
-        <Box px="24px" mx="auto" width="1044px" maxW="100%">
+        {/* <Box px="24px" mx="auto" width="1044px" maxW="100%">
           <Footer />
-        </Box>
+        </Box> */}
       </Box>
     </ChakraProvider>
   );

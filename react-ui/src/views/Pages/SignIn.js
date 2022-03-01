@@ -11,6 +11,7 @@ import {
   Link,
   Switch,
   Text,
+  Image,
   useColorModeValue,
 } from "@chakra-ui/react";
 // Assets
@@ -20,6 +21,7 @@ import { useAuth } from "../../auth-context/auth.context";
 import AuthApi from "../../api/auth";
 
 import { useHistory } from "react-router-dom";
+import logo1 from "assets/img/6.jpg";
 
 function SignIn() {
   // Chakra color mode
@@ -84,13 +86,33 @@ function SignIn() {
         w="100%"
         maxW="1044px"
         mx="auto"
-        justifyContent="space-between"
+        justifyContent="center"
         mb="30px"
         pt={{ sm: "100px", md: "0px" }}
       >
+
+        {/* <Box
+          display={{ base: "none", md: "block" }}
+          overflowX="hidden"
+          h="100%"
+          w="40vw"
+          position="absolute"
+          left="0px"
+        >
+          <Box
+            bgImage={signInImage}
+            w="100%"
+            h="100%"
+            bgSize="cover"
+            bgPosition="50%"
+            position="absolute"
+            borderBottomLeftRadius="20px"
+          ></Box>
+        </Box> */}
+
         <Flex
           alignItems="center"
-          justifyContent="start"
+          justifyContent="end"
           style={{ userSelect: "none" }}
           w={{ base: "100%", md: "50%", lg: "42%" }}
         >
@@ -98,7 +120,7 @@ function SignIn() {
             <div>
               <Heading color={titleColor} fontSize="32px" mt="10px" mb="10px">
                 Welcome Back
-            </Heading>
+              </Heading>
               <h3 style={{ textAlign: "center" }}>You are already signed in.</h3>
               <Button
                 fontSize="15px"
@@ -127,10 +149,18 @@ function SignIn() {
               p="48px"
               mt={{ md: "150px", lg: "80px" }}
             >
-              <Heading color={titleColor} fontSize="32px" mt="10px" mb="10px">
-              Math-based Game
-            </Heading>
-              <Text
+              {/* <Heading color={titleColor} fontSize="32px" mt="10px" mb="10px">
+                Math-based Game
+              </Heading> */}
+
+              <Image
+                src={logo1}
+                alt="logo1 image"
+                style={{ marginLeft: "30px", marginTop: "30px", marginBottom: "50px" }}
+                w="70%"
+              />
+
+              {/* <Text
                 mb="36px"
                 ms="4px"
                 color={textColor}
@@ -138,11 +168,11 @@ function SignIn() {
                 fontSize="14px"
               >
                 Enter your email and password to sign in
-            </Text>
+              </Text> */}
               <FormControl>
                 <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
                   Email
-              </FormLabel>
+                </FormLabel>
                 <Input
                   borderRadius="15px"
                   mb="24px"
@@ -158,7 +188,7 @@ function SignIn() {
                 />
                 <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
                   Password
-              </FormLabel>
+                </FormLabel>
                 <Input
                   borderRadius="15px"
                   mb="36px"
@@ -181,7 +211,7 @@ function SignIn() {
                     fontWeight="normal"
                   >
                     Remember me
-                </FormLabel>
+                  </FormLabel>
                 </FormControl>
                 <h4
                   style={{
@@ -228,24 +258,7 @@ function SignIn() {
             </Flex>
           }
         </Flex>
-        <Box
-          display={{ base: "none", md: "block" }}
-          overflowX="hidden"
-          h="100%"
-          w="40vw"
-          position="absolute"
-          right="0px"
-        >
-          <Box
-            bgImage={signInImage}
-            w="100%"
-            h="100%"
-            bgSize="cover"
-            bgPosition="50%"
-            position="absolute"
-            borderBottomLeftRadius="20px"
-          ></Box>
-        </Box>
+
       </Flex>
     </Flex>
   );

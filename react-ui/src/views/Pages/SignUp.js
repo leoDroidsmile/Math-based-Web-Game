@@ -1,251 +1,153 @@
-// Chakra imports
 import {
-  Box,
-  Button,
+  Container,
   Flex,
+  Box,
+  IconButton,
+  Image,
+  Button,
+  VStack,
+  HStack,
+  Heading,
+  Text,
+  Wrap,
+  WrapItem,
   FormControl,
   FormLabel,
-  HStack,
-  Icon,
   Input,
-  Link,
-  Switch,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
-// Assets
-import BgSignUp from "assets/img/BgSignUp.png";
-import React, { useState } from "react";
-import { FaApple, FaFacebook, FaGoogle } from "react-icons/fa";
+  InputGroup,
+  InputLeftElement,
+  Textarea,
+  Stack,
+  Center,
+} from '@chakra-ui/react';
+import {
+  MdPhone,
+  MdEmail,
+  MdLocationOn,
+  MdFacebook,
+  MdOutlineEmail,
+} from 'react-icons/md';
+import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
+import logo from "../../assets/img/logo-signup.jpg";
 
-import AuthApi from "../../api/auth";
-import { useHistory } from "react-router-dom";
-
-function SignUp() {
-  const history = useHistory();
-
-  const titleColor = useColorModeValue("teal.300", "teal.200");
-  const textColor = useColorModeValue("gray.700", "white");
-  const bgColor = useColorModeValue("white", "gray.700");
-  const bgIcons = useColorModeValue("teal.200", "rgba(255, 255, 255, 0.5)");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [buttonText, setButtonText] = useState("Sign up");
-  const [error, setError] = useState(undefined);
-
-  const register = async (event) => {
-    if (event) {
-      event.preventDefault();
-    }
-    if (name === "") {
-      return setError("You must enter your name.");
-    }
-    if (email === "") {
-      return setError("You must enter your email.");
-    }
-    if (password === "") {
-      return setError("You must enter a password.");
-    }
-    try {
-      setButtonText("Signing up");
-      let response = await AuthApi.Register({
-        username: name,
-        email,
-        password,
-      });
-      if (response.data && response.data.success === false) {
-        setButtonText("Sign up");
-        return setError(response.data.msg);
-      }
-      return history.push("/auth/signin");
-    } catch (err) {
-      console.log(err);
-      setButtonText("Sign up");
-      if (err.response) {
-        return setError(err.response.data.msg);
-      }
-      return setError("There has been an error.");
-    }
-  };
-
+export default function SignUp() {
   return (
-    <Flex
-      direction="column"
-      alignSelf="center"
-      justifySelf="center"
-      overflow="hidden"
-    >
-      <Box
-        position="absolute"
-        minH={{ base: "70vh", md: "50vh" }}
-        w={{ md: "calc(100vw - 50px)" }}
-        borderRadius={{ md: "15px" }}
-        left="0"
-        right="0"
-        bgRepeat="no-repeat"
-        overflow="hidden"
-        zIndex="-1"
-        top="0"
-        bgImage={BgSignUp}
-        bgSize="cover"
-        mx={{ md: "auto" }}
-        mt={{ md: "14px" }}
-      ></Box>
-      <Flex
-        direction="column"
-        textAlign="center"
-        justifyContent="center"
-        align="center"
-        mt="6.5rem"
-        mb="30px"
-      >
-        <Text fontSize="4xl" color="white" fontWeight="bold">
-          Welcome!
-        </Text>
-        <Text
-          fontSize="md"
-          color="white"
-          fontWeight="normal"
-          mt="10px"
-          mb="26px"
-          w={{ base: "90%", sm: "60%", lg: "40%", xl: "30%" }}
-        >
-          Use these awesome forms to login or create new account in your project
-          for free.
-        </Text>
+    <Container bg="#64cce4" maxW="full" >
+      <Flex >
+        <Box style={{ borderRadius: "35px", marginTop: "120px", marginBottom: "30px", paddingLeft: "8%", width: "100%" }}>
+          <Wrap spacing={{ base: 0, sm: 3, md: 5, lg: 0 }}>
+            <WrapItem bg="#f27924" borderRadius="35px 0 0 35px" color="white" >
+              <Box p={10}>
+                <Box>
+                  <Box alignItems="center">
+                    <Image
+                      src={logo}
+                      alt="youth man image"
+                      width="220px" height="220px"
+                    />
+                  </Box>
+                  <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
+                    <VStack pl={0} spacing={3} alignItems="flex-start">
+                      <Heading width="220px">
+                        A Revolution In Learning Accounting!
+                      </Heading>
+                      <Text width="220px" fontSize="xs">
+                        You've just been hired as a junior accountant at ACC Partners. Your first client is up-and coming DJ "Moe Money".
+                      </Text>
+                      <Text width="220px" fontSize="xs">
+                        Start your virtual co-op experience today and learn Intro to accounting on your own time.
+                      </Text>
+                    </VStack>
+                  </Box>
+                </Box>
+              </Box>
+            </WrapItem>
+            <WrapItem>
+              <Box bg="white" borderRadius="0 35px 35px 0" style={{ width: "58vw" }} >
+                <Wrap minW="full" maxW="full">
+                  <WrapItem minW="26vw" color="gray.500" >
+                    <Flex flexDirection="column" justify={'center'} align={'center'} w="100%" style={{ "padding": "50px" }}>
+                      <Stack spacing={5} minH={'70vh'} style={{ width: "100%" }} justify={'center'} align={'center'}>
+                        <Heading fontSize="24px" mb="30px">Create Your Account</Heading>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            {/* <InputLeftElement
+                              pointerEvents="none"
+                              children={<BsPerson color="gray.800" />}
+                            /> */}
+                            <Input type="text" size="sm" placeholder="First Name" borderRadius="10px" />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="Last Name" borderRadius="10px" />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="Email Address" borderRadius="10px" />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="School" borderRadius="10px" />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="Class#" borderRadius="10px" />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="Choose a Username" borderRadius="10px" />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="Set Password" borderRadius="10px" />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="Verify Password" borderRadius="10px" />
+                          </InputGroup>
+                        </FormControl>
+                      </Stack>
+                    </Flex>
+                  </WrapItem>
+                  <WrapItem minW="26vw" color="gray.500">
+                    <Flex flexDirection="column" justify={'center'} align={'center'} w="100%" style={{ "padding": "50px" }}>
+                      <Stack spacing={5} minH={'70vh'} style={{ width: "100%" }} justify={'center'} align={'center'}>
+                        <Heading fontSize="18px" color="gray.400">Select your Avatar</Heading>
+                        <Box alignItems="center">
+                          <Image
+                            src={logo}
+                            width="100px" height="100px"
+                          />
+                        </Box>
+                        <FormControl id="name" float="right">
+                          <Button
+                            size="sm"
+                            variant="solid"
+                            bg="#00bcef"
+                            color="white"
+                            _hover={{}}
+                            maxW="full"
+                            minW="full"
+                            borderRadius="10px">
+                            Create My Account
+                          </Button>
+                        </FormControl>
+                      </Stack>
+                    </Flex >
+                  </WrapItem>
+                </Wrap>
+              </Box>
+            </WrapItem>
+          </Wrap>
+        </Box>
       </Flex>
-      <Flex alignItems="center" justifyContent="center" mb="60px" mt="20px">
-        <Flex
-          direction="column"
-          w="445px"
-          background="transparent"
-          borderRadius="15px"
-          p="40px"
-          mx={{ base: "100px" }}
-          bg={bgColor}
-          boxShadow="0 20px 27px 0 rgb(0 0 0 / 5%)"
-        >
-          <Text
-            fontSize="xl"
-            color={textColor}
-            fontWeight="bold"
-            textAlign="center"
-            mb="22px"
-          >
-            Math-based Game
-          </Text>
-          <Text
-            fontSize="lg"
-            color="gray.400"
-            fontWeight="bold"
-            textAlign="center"
-            mb="22px"
-          >
-            or
-          </Text>
-          <FormControl>
-            <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-              Name
-            </FormLabel>
-            <Input
-              fontSize="sm"
-              ms="4px"
-              borderRadius="15px"
-              type="text"
-              placeholder="Your full name"
-              mb="24px"
-              size="lg"
-              onChange={(event) => {
-                setName(event.target.value);
-                setError(undefined);
-              }}
-            />
-            <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-              Email
-            </FormLabel>
-            <Input
-              fontSize="sm"
-              ms="4px"
-              borderRadius="15px"
-              type="email"
-              placeholder="Your email address"
-              mb="24px"
-              size="lg"
-              onChange={(event) => {
-                setEmail(event.target.value);
-                setError(undefined);
-              }}
-            />
-            <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-              Password
-            </FormLabel>
-            <Input
-              fontSize="sm"
-              ms="4px"
-              borderRadius="15px"
-              type="password"
-              placeholder="Your password"
-              mb="24px"
-              size="lg"
-              onChange={(event) => {
-                setPassword(event.target.value);
-                setError(undefined);
-              }}
-            />
-            <FormControl display="flex" alignItems="center" mb="24px">
-              <Switch id="remember-login" colorScheme="teal" me="10px" />
-              <FormLabel htmlFor="remember-login" mb="0" fontWeight="normal">
-                Remember me
-              </FormLabel>
-            </FormControl>
-            <h4
-              style={{
-                fontSize: ".9em",
-                color: "red",
-                textAlign: "center",
-                fontWeight: 400,
-                transition: ".2s all",
-                marginBottom: '1em'
-              }}
-            >
-              {error}
-            </h4>
-            <Button
-              type="submit"
-              bg="teal.300"
-              fontSize="10px"
-              color="white"
-              fontWeight="bold"
-              w="100%"
-              h="45"
-              mb="24px"
-              _hover={{
-                bg: "teal.200",
-              }}
-              _active={{
-                bg: "teal.400",
-              }}
-              onClick={register}
-            >
-              {buttonText}
-            </Button>
-          </FormControl>
-          <Flex
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            maxW="100%"
-            mt="0px"
-          >
-            {/* <Text color={textColor} fontWeight="medium">
-              Open-source Full-Stack Seed Project 
-            </Text> */}
-          </Flex>
-        </Flex>
-      </Flex>
-    </Flex>
+    </Container>
   );
 }
-
-export default SignUp;
