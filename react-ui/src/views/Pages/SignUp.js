@@ -57,6 +57,7 @@ export default function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rPassword, setRPassword] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [error, setError] = useState(undefined);
 
   const register = async (event) => {
@@ -90,6 +91,9 @@ export default function SignUp() {
     if (password !== rPassword) {
       return setError("Password is incorrect. Please enter again.");
     }
+    if (avatar === "") {
+      return setError("avatar is not selected. Please click again.");
+    }
     try {
       let response = await AuthApi.Register({
         firstname,
@@ -99,6 +103,7 @@ export default function SignUp() {
         classs,
         username,
         password,
+        avatar
       });
       console.log(response.data);
       if (response.data && response.data.success === false) {
@@ -116,9 +121,11 @@ export default function SignUp() {
   return (
     <Container bg="#64cce4" maxW="full" >
       <Flex >
-        <Box style={{ borderRadius: "35px", marginTop: "120px", marginBottom: "30px", paddingLeft: "8%", width: "100%" }}>
-          <Wrap spacing={{ base: 0, sm: 3, md: 5, lg: 0 }}>
-            <WrapItem bg="#f27924" borderRadius="35px 0 0 35px" color="white" >
+        <Box style={{ borderRadius: "35px", marginTop: "120px", marginBottom: "30px", paddingLeft: "8%", paddingRight: "8%", width: "100%" }}>
+          <Grid
+            templateColumns='repeat(3, 1fr)'
+          >
+            <GridItem colSpan={1} bg="#f27924" borderRadius="35px 0 0 35px" color="white" >
               <Box p={10}>
                 <Box>
                   <Box alignItems="center">
@@ -143,136 +150,135 @@ export default function SignUp() {
                   </Box>
                 </Box>
               </Box>
-            </WrapItem>
-            <WrapItem>
-              <Box bg="white" borderRadius="0 35px 35px 0" style={{ width: "58vw" }} >
-                <Wrap minW="full" maxW="full">
-                  <Flex flexDirection="row" align={'center'}>
-                    <WrapItem minW="26vw" color="gray.500" >
-                      <Flex flexDirection="column" justify={'center'} align={'center'} w="100%" style={{ "padding": "50px" }}>
-                        <Stack spacing={5} minH={'70vh'} style={{ width: "100%" }} justify={'center'} align={'center'}>
-                          <Heading fontSize="24px" mb="30px">Create Your Account</Heading>
-                          <FormControl id="name" style={{ marginTop: "10px" }}>
-                            <InputGroup borderColor="#E0E1E7">
-                              {/* <InputLeftElement
-                              pointerEvents="none"
-                              children={<BsPerson color="gray.800" />}
-                            /> */}
-                              <Input type="text" size="sm" placeholder="First Name" borderRadius="10px" onChange={(event) => {
-                                setFirstName(event.target.value);
-                                setError(undefined);
-                              }} />
-                            </InputGroup>
-                          </FormControl>
-                          <FormControl id="name" style={{ marginTop: "10px" }}>
-                            <InputGroup borderColor="#E0E1E7">
-                              <Input type="text" size="sm" placeholder="Last Name" borderRadius="10px" onChange={(event) => {
-                                setLastName(event.target.value);
-                                setError(undefined);
-                              }} />
-                            </InputGroup>
-                          </FormControl>
-                          <FormControl id="name" style={{ marginTop: "10px" }}>
-                            <InputGroup borderColor="#E0E1E7">
-                              <Input type="text" size="sm" placeholder="Email Address" borderRadius="10px" onChange={(event) => {
-                                setEmail(event.target.value);
-                                setError(undefined);
-                              }} />
-                            </InputGroup>
-                          </FormControl>
-                          <FormControl id="name" style={{ marginTop: "10px" }}>
-                            <InputGroup borderColor="#E0E1E7">
-                              <Input type="text" size="sm" placeholder="School" borderRadius="10px" onChange={(event) => {
-                                setSchool(event.target.value);
-                                setError(undefined);
-                              }} />
-                            </InputGroup>
-                          </FormControl>
-                          <FormControl id="name" style={{ marginTop: "10px" }}>
-                            <InputGroup borderColor="#E0E1E7">
-                              <Input type="text" size="sm" placeholder="Class#" borderRadius="10px" onChange={(event) => {
-                                setClasss(event.target.value);
-                                setError(undefined);
-                              }} />
-                            </InputGroup>
-                          </FormControl>
-                          <FormControl id="name" style={{ marginTop: "10px" }}>
-                            <InputGroup borderColor="#E0E1E7">
-                              <Input type="text" size="sm" placeholder="Choose a Username" borderRadius="10px" onChange={(event) => {
-                                setUsername(event.target.value);
-                                setError(undefined);
-                              }} />
-                            </InputGroup>
-                          </FormControl>
-                          <FormControl id="name" style={{ marginTop: "10px" }}>
-                            <InputGroup borderColor="#E0E1E7">
-                              <Input type="text" size="sm" placeholder="Set Password" borderRadius="10px" onChange={(event) => {
-                                setPassword(event.target.value);
-                                setError(undefined);
-                              }} />
-                            </InputGroup>
-                          </FormControl>
-                          <FormControl id="name" style={{ marginTop: "10px" }}>
-                            <InputGroup borderColor="#E0E1E7">
-                              <Input type="text" size="sm" placeholder="Verify Password" borderRadius="10px" onChange={(event) => {
-                                setRPassword(event.target.value);
-                                setError(undefined);
-                              }} />
-                            </InputGroup>
+            </GridItem>
+            <GridItem colSpan={2}>
+              <Box bg="white" borderRadius="0 35px 35px 0" style={{ width: "100%" }} >
 
-                          </FormControl>
-                        </Stack>
-                      </Flex>
-                    </WrapItem>
-                    <WrapItem minW="36vw" color="gray.500">
-                      <Spacer />
-                      <Flex flexDirection="column" justify={'center'} alignItems={'center'} style={{ "padding": "10px", "marginRight": "220px" }}>
-                        <Stack spacing={5} minH={'70vh'} justify={'center'} align={'center'}>
-                          <Heading fontSize="18px" color="gray.400">Select your Avatar</Heading>
-                          <Grid templateColumns='repeat(3, 1fr)' gap={3}>
-                            <SurveyCard img={avatar1} id="1" />
-                            <SurveyCard img={avatar2} id="2" />
-                            <SurveyCard img={avatar3} id="3" />
-                            <SurveyCard img={avatar4} id="4" />
-                            <SurveyCard img={avatar5} id="5" />
-                            <SurveyCard img={avatar6} id="6" />
-                            <SurveyCard img={avatar7} id="7" />
-                          </Grid>
-                          <FormControl id="name" float="right">
-                            <h4
-                              style={{
-                                fontSize: ".9em",
-                                color: "red",
-                                textAlign: "center",
-                                fontWeight: 400,
-                                transition: ".2s all",
-                                marginBottom: '1em'
-                              }}
-                            >
-                              {error}
-                            </h4>
-                            <Button
-                              size="sm"
-                              variant="solid"
-                              bg="#00bcef"
-                              color="white"
-                              _hover={{}}
-                              maxW="full"
-                              minW="full"
-                              borderRadius="10px"
-                              onClick={register}
-                            >
-                              Create My Account
-                            </Button>
-                          </FormControl>
-                        </Stack>
-                      </Flex >
-                    </WrapItem>
-                  </Flex>
-                </Wrap>
+                <Grid
+                  templateColumns='repeat(2, 1fr)'
+                  gap={2} p={10}>
+                  <GridItem colSpan={1} color="gray.500" p={5}>
+                    <Flex flexDirection="column" justify={'center'} align={'center'} >
+                      <Stack spacing={5} minH={'70vh'} style={{ width: "100%" }} justify={'center'} align={'center'}>
+                        <Heading fontSize="24px" mb="30px">Create Your Account</Heading>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="First Name" borderRadius="10px" onChange={(event) => {
+                              setFirstName(event.target.value);
+                              setError(undefined);
+                            }} />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="Last Name" borderRadius="10px" onChange={(event) => {
+                              setLastName(event.target.value);
+                              setError(undefined);
+                            }} />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="Email Address" borderRadius="10px" onChange={(event) => {
+                              setEmail(event.target.value);
+                              setError(undefined);
+                            }} />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="School" borderRadius="10px" onChange={(event) => {
+                              setSchool(event.target.value);
+                              setError(undefined);
+                            }} />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="Class#" borderRadius="10px" onChange={(event) => {
+                              setClasss(event.target.value);
+                              setError(undefined);
+                            }} />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="text" size="sm" placeholder="Choose a Username" borderRadius="10px" onChange={(event) => {
+                              setUsername(event.target.value);
+                              setError(undefined);
+                            }} />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="password" size="sm" placeholder="Set Password" borderRadius="10px" onChange={(event) => {
+                              setPassword(event.target.value);
+                              setError(undefined);
+                            }} />
+                          </InputGroup>
+                        </FormControl>
+                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                          <InputGroup borderColor="#E0E1E7">
+                            <Input type="password" size="sm" placeholder="Verify Password" borderRadius="10px" onChange={(event) => {
+                              setRPassword(event.target.value);
+                              setError(undefined);
+                            }} />
+                          </InputGroup>
+
+                        </FormControl>
+                      </Stack>
+                    </Flex>
+                  </GridItem>
+                  <GridItem colSpan={1} color="gray.500" p={5} >
+                    <Flex justify={'center'} align={'center'}  >
+                      <Stack minH={'70vh'} style={{ width: "100%" }} justify={'center'} align={'center'}>
+                        <Heading fontSize="18px" color="gray.400">Select your Avatar</Heading>
+                        <Grid templateColumns='repeat(3, 1fr)' onChange={(e) => { setAvatar(e.target.nextSibling.src); setError(undefined); }} >
+                          <SurveyCard img={avatar1} id="1" />
+                          <SurveyCard img={avatar2} id="2" />
+                          <SurveyCard img={avatar3} id="3" />
+                          <SurveyCard img={avatar4} id="4" />
+                          <SurveyCard img={avatar5} id="5" />
+                          <SurveyCard img={avatar6} id="6" />
+                          <SurveyCard img={avatar7} id="7" />
+                          {/* </div> */}
+                        </Grid>
+                        <FormControl id="name" float="right">
+                          <h4
+                            style={{
+                              fontSize: ".9em",
+                              color: "red",
+                              textAlign: "center",
+                              fontWeight: 400,
+                              transition: ".2s all",
+                              marginBottom: '1em'
+                            }}
+                          >
+                            {error}
+                          </h4>
+                          <Button
+                            size="sm"
+                            variant="solid"
+                            bg="#00bcef"
+                            color="white"
+                            _hover={{}}
+                            maxW="full"
+                            minW="full"
+                            borderRadius="10px"
+                            onClick={register}
+                          >
+                            Create My Account
+                          </Button>
+                        </FormControl>
+                      </Stack>
+                    </Flex >
+                  </GridItem>
+                </Grid>
+
               </Box>
-            </WrapItem>
-          </Wrap>
+            </GridItem>
+          </Grid>
+          {/* </Wrap> */}
         </Box>
       </Flex>
     </Container>
