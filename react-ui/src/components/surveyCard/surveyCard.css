@@ -1,0 +1,36 @@
+.survey-card{
+    position: relative;
+}
+.css-zcxndt{
+    width: 100% !important;
+}
+img{
+    width: 70px;
+    height: auto;
+}
+
+label{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.survey-card input{
+    position: absolute;
+    display: none;
+}
+
+
+input[type=radio]:checked + img{
+    border: 3px solid #66ccff !important;
+}
+
+input[type=radio]:checked + label{
+    border: 3px solid #66ccff !important;
+}
+
+.survey-image{
+    border: 1px solid red;
+}
