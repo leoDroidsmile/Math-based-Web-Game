@@ -118,7 +118,7 @@ Now, the API can be accessed on port `5001`
 ```javascript
 const config = {
     ...
-    API_SERVER: 'http://localhost:5000/api/'  // <-- The magic line
+    API_SERVER: 'http://localhost:8000/api/'  // <-- The magic line
 };
 ```
 

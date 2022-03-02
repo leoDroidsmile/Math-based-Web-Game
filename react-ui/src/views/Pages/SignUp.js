@@ -31,7 +31,7 @@ import {
   MdOutlineEmail,
 } from 'react-icons/md';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
 import logo from "../../assets/img/logo-signup.jpg";
 import AuthApi from "../../api/auth";
@@ -60,6 +60,12 @@ export default function SignUp() {
   const [avatar, setAvatar] = useState("");
   const [error, setError] = useState(undefined);
 
+  const validateEmail = (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
+
   const register = async (event) => {
     if (event) {
       event.preventDefault();
@@ -72,6 +78,9 @@ export default function SignUp() {
     }
     if (email === "") {
       return setError("You must enter your email.");
+    }
+    if (!validateEmail(email)) {
+      return setError("Email is not valid");
     }
     if (school === "") {
       return setError("You must enter your school.");
@@ -119,16 +128,16 @@ export default function SignUp() {
     }
   }
   return (
-    <Container bg="#64cce4" maxW="full" >
-      <Flex >
-        <Box style={{ borderRadius: "35px", marginTop: "120px", marginBottom: "30px", paddingLeft: "8%", paddingRight: "8%", width: "100%" }}>
+    <Container bg="#64cce4" maxW="full" minH="100vh" overflow="hidden">
+      <Flex justifyContent='center'>
+        <Box style={{ borderRadius: "35px", marginTop: "50px", marginBottom: "30px", width: '70%' }}>
           <Grid
             templateColumns='repeat(3, 1fr)'
           >
             <GridItem colSpan={1} bg="#f27924" borderRadius="35px 0 0 35px" color="white" >
-              <Box p={10}>
-                <Box>
-                  <Box alignItems="center">
+              <Box p={10} display="flex" justifyContent="center">
+                <Box >
+                  <Box >
                     <Image
                       src={logo}
                       alt="youth man image"
@@ -161,7 +170,7 @@ export default function SignUp() {
                     <Flex flexDirection="column" justify={'center'} align={'center'} >
                       <Stack spacing={5} minH={'70vh'} style={{ width: "100%" }} justify={'center'} align={'center'}>
                         <Heading fontSize="24px" mb="30px">Create Your Account</Heading>
-                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                        <FormControl id="firstname" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
                             <Input type="text" size="sm" placeholder="First Name" borderRadius="10px" onChange={(event) => {
                               setFirstName(event.target.value);
@@ -169,7 +178,7 @@ export default function SignUp() {
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                        <FormControl id="lastname" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
                             <Input type="text" size="sm" placeholder="Last Name" borderRadius="10px" onChange={(event) => {
                               setLastName(event.target.value);
@@ -177,15 +186,15 @@ export default function SignUp() {
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                        <FormControl id="emailaddress" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="Email Address" borderRadius="10px" onChange={(event) => {
+                            <Input type="email" size="sm" placeholder="Email Address" borderRadius="10px" onChange={(event) => {
                               setEmail(event.target.value);
                               setError(undefined);
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                        <FormControl id="school" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
                             <Input type="text" size="sm" placeholder="School" borderRadius="10px" onChange={(event) => {
                               setSchool(event.target.value);
@@ -193,7 +202,7 @@ export default function SignUp() {
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                        <FormControl id="classs" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
                             <Input type="text" size="sm" placeholder="Class#" borderRadius="10px" onChange={(event) => {
                               setClasss(event.target.value);
@@ -201,7 +210,7 @@ export default function SignUp() {
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                        <FormControl id="username" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
                             <Input type="text" size="sm" placeholder="Choose a Username" borderRadius="10px" onChange={(event) => {
                               setUsername(event.target.value);
@@ -209,7 +218,7 @@ export default function SignUp() {
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                        <FormControl id="password" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
                             <Input type="password" size="sm" placeholder="Set Password" borderRadius="10px" onChange={(event) => {
                               setPassword(event.target.value);
@@ -217,14 +226,26 @@ export default function SignUp() {
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="name" style={{ marginTop: "10px" }}>
+                        <FormControl id="rpassword" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
                             <Input type="password" size="sm" placeholder="Verify Password" borderRadius="10px" onChange={(event) => {
                               setRPassword(event.target.value);
                               setError(undefined);
                             }} />
                           </InputGroup>
-
+                          <h4
+                            style={{
+                              fontSize: ".9em",
+                              color: "red",
+                              textAlign: "center",
+                              fontWeight: 400,
+                              transition: ".2s all",
+                              marginTop: "1em",
+                              height: "1em"
+                            }}
+                          >
+                            {error}
+                          </h4>
                         </FormControl>
                       </Stack>
                     </Flex>
@@ -244,18 +265,6 @@ export default function SignUp() {
                           {/* </div> */}
                         </Grid>
                         <FormControl id="name" float="right">
-                          <h4
-                            style={{
-                              fontSize: ".9em",
-                              color: "red",
-                              textAlign: "center",
-                              fontWeight: 400,
-                              transition: ".2s all",
-                              marginBottom: '1em'
-                            }}
-                          >
-                            {error}
-                          </h4>
                           <Button
                             size="sm"
                             variant="solid"
@@ -266,10 +275,17 @@ export default function SignUp() {
                             minW="full"
                             borderRadius="10px"
                             onClick={register}
+                            marginTop='1em'
                           >
                             Create My Account
                           </Button>
                         </FormControl>
+                        <Box color="gray.600" style={{ display: "flex", justifyContent: "center" }}>
+                          Already have an account? {" "}
+                          <NavLink to="/auth/signin" style={{ marginLeft: "10px", color: '#4da6ff' }}>
+                            Sign in
+                          </NavLink>
+                        </Box>
                       </Stack>
                     </Flex >
                   </GridItem>
@@ -281,6 +297,6 @@ export default function SignUp() {
           {/* </Wrap> */}
         </Box>
       </Flex>
-    </Container>
+    </Container >
   );
 }

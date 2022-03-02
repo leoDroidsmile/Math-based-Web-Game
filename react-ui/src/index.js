@@ -33,7 +33,7 @@ ReactDOM.render(
   <AuthProvider userData={user}>
     <HashRouter>
       <Switch>
-        <Route path={`/auth/signin`} component={AuthLayout} />
+        <Route exact path={`/auth/signin`} component={AuthLayout} />
         <Route path={`/auth/signup`} component={AuthLayout} />
         <ProtectedRoute path={`/admin`} component={AdminLayout} />
         <ProtectedRoute path={`/rtl`} component={RTLLayout} />

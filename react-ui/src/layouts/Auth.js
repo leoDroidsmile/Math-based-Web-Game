@@ -2,7 +2,7 @@
 import { Box, ChakraProvider, Portal } from "@chakra-ui/react";
 import Footer from "components/Footer/Footer.js";
 // core components
-import AuthNavbar from "components/Navbars/AuthNavbar.js";
+// import AuthNavbar from "components/Navbars/AuthNavbar.js";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import routes from "routes.js";
@@ -86,12 +86,12 @@ export default function Pages(props) {
   return (
     <ChakraProvider theme={theme} resetCss={false}>
       <Box ref={navRef} w="100%" background="white">
-        <Portal containerRef={navRef}>
+        {/* <Portal containerRef={navRef}>
           <AuthNavbar
             secondary={getActiveNavbar(routes)}
             logoText="Math-based Web Game"
           />
-        </Portal>
+        </Portal> */}
         <Box w="100%">
           <Box ref={wrapper} w="100%">
             <Switch>

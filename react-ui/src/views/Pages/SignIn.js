@@ -20,7 +20,7 @@ import signInImage from "assets/img/SidebarHelpImage.png";
 import { useAuth } from "../../auth-context/auth.context";
 import AuthApi from "../../api/auth";
 
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import logo1 from "assets/img/6.jpg";
 
 function SignIn() {
@@ -36,6 +36,12 @@ function SignIn() {
   const [error, setError] = useState(undefined);
   const [buttonText, setButtonText] = useState("Sign in");
 
+  const validateEmail = (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
+
   const login = async (event) => {
     if (event) {
       event.preventDefault();
@@ -45,6 +51,9 @@ function SignIn() {
     }
     if (email === "") {
       return setError("You must enter your email.");
+    }
+    if (!validateEmail(email)) {
+      return setError("Email is not valid");
     }
     if (password === "") {
       return setError("You must enter your password");
@@ -146,8 +155,8 @@ function SignIn() {
               direction="column"
               w="100%"
               background="transparent"
-              p="48px"
-              mt={{ md: "150px", lg: "80px" }}
+              p="30px"
+              mt={{ md: "10px", lg: "80px" }}
             >
               {/* <Heading color={titleColor} fontSize="32px" mt="10px" mb="10px">
                 Math-based Game
@@ -156,7 +165,7 @@ function SignIn() {
               <Image
                 src={logo1}
                 alt="logo1 image"
-                style={{ marginLeft: "30px", marginTop: "30px", marginBottom: "50px" }}
+                style={{ marginLeft: "45px", marginBottom: "30px" }}
                 w="70%"
               />
 
@@ -212,6 +221,7 @@ function SignIn() {
                   >
                     Remember me
                   </FormLabel>
+
                 </FormControl>
                 <h4
                   style={{
@@ -225,25 +235,32 @@ function SignIn() {
                   {error}
                 </h4>
                 <Button
-                  fontSize="10px"
+                  size="sm"
                   type="submit"
                   bg="teal.300"
-                  w="100%"
-                  h="45"
+                  w="90%"
                   mb="20px"
                   color="white"
                   mt="20px"
+                  ml="20px"
                   _hover={{
                     bg: "teal.200",
                   }}
                   _active={{
                     bg: "teal.400",
                   }}
+                  borderRadius="10px"
                   onClick={login}
                 >
                   {buttonText}
                 </Button>
               </FormControl>
+              <Box color="gray.600" style={{ display: "flex", justifyContent: "center" }}>
+                Don't have an account?{" "}
+                <NavLink to="/auth/signup" style={{ marginLeft: "10px", color: '#4da6ff' }}>
+                  Sign up
+                </NavLink>
+              </Box>
               <Flex
                 flexDirection="column"
                 justifyContent="center"
