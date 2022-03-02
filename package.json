@@ -14,6 +14,7 @@
     "engines": {
         "node": ">=10.0.0"
     },
-    "dependencies": {},
-    "devDependencies": {}
+    "dependencies": {
+        "styled-component": "^2.8.0"
+    }
 }

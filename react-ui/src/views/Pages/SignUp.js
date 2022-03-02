@@ -43,6 +43,7 @@ import avatar4 from "../../assets/img/signup/4.png";
 import avatar5 from "../../assets/img/signup/5.png";
 import avatar6 from "../../assets/img/signup/6.png";
 import avatar7 from "../../assets/img/signup/7.png";
+import '../../assets/css/SignUp.css';
 
 import SurveyCard from 'components/surveyCard';
 import { column } from 'stylis';
@@ -128,9 +129,9 @@ export default function SignUp() {
     }
   }
   return (
-    <Container bg="#64cce4" maxW="full" minH="100vh" overflow="hidden">
+    <Container bg="#64cce4" maxW="full" minH="100vh" overflow="hidden" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Flex justifyContent='center'>
-        <Box style={{ borderRadius: "35px", marginTop: "50px", marginBottom: "30px", width: '70%' }}>
+        <Box style={{ borderRadius: "35px", marginTop: "50px", marginBottom: "30px" }} className='big_box'>
           <Grid
             templateColumns='repeat(3, 1fr)'
           >
@@ -160,16 +161,16 @@ export default function SignUp() {
                 </Box>
               </Box>
             </GridItem>
-            <GridItem colSpan={2}>
-              <Box bg="white" borderRadius="0 35px 35px 0" style={{ width: "100%" }} >
+            <GridItem colSpan={2} className='grid_1'>
+              <Box bg="white" borderRadius="0 35px 35px 0" style={{ width: "100%", height: "100%" }} >
 
                 <Grid
                   templateColumns='repeat(2, 1fr)'
                   gap={2} p={10}>
-                  <GridItem colSpan={1} color="gray.500" p={5}>
-                    <Flex flexDirection="column" justify={'center'} align={'center'} >
-                      <Stack spacing={5} minH={'70vh'} style={{ width: "100%" }} justify={'center'} align={'center'}>
-                        <Heading fontSize="24px" mb="30px">Create Your Account</Heading>
+                  <GridItem colSpan={1} color="gray.500" p={5} className='grid_item1'>
+                    <Flex flexDirection="column" justify={'center'} align={'center'} className='flex_1'>
+                      <Stack spacing={5} minH={'70vh'} style={{ width: "100%" }} justify={'center'} align={'center'} className='stack_1'>
+                        <Heading fontSize="24px" mb="30px" class='title_signup'>Create Your Account</Heading>
                         <FormControl id="firstname" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
                             <Input type="text" size="sm" placeholder="First Name" borderRadius="10px" onChange={(event) => {
@@ -280,7 +281,7 @@ export default function SignUp() {
                             Create My Account
                           </Button>
                         </FormControl>
-                        <Box color="gray.600" style={{ display: "flex", justifyContent: "center" }}>
+                        <Box color="gray.600" style={{ display: "flex", justifyContent: 'center', flexWrap: 'wrap' }}>
                           Already have an account? {" "}
                           <NavLink to="/auth/signin" style={{ marginLeft: "10px", color: '#4da6ff' }}>
                             Sign in

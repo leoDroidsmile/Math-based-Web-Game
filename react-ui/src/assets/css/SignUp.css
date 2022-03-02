@@ -1,0 +1,27 @@
+.title_signup {
+    /* color: red; */
+}
+
+.grid_1 {
+
+}
+
+.grid_item1 {
+    /* width: 1000px !important;
+    background-color: red; */
+}
+
+.flex_1 {
+    /* background-color: red; */
+}
+
+.stack_1 {
+    width: 200px !important;
+}
+
+@media screen and (max-width: 1015px) {
+    /* .big_box {
+        width: 1015px;
+        background-color: red;
+    } */
+}
