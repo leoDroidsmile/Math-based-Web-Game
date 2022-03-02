@@ -79,7 +79,7 @@ export default function AuthNavbar(props) {
       color={mainText}
     >
       <CreativeTimLogo w="32px" h="32px" me="10px" />
-      <Text fontSize="sm" mt="3px">
+      <Text fontsize="sm" mt="3px">
         {logoText}
       </Text>
     </Link>

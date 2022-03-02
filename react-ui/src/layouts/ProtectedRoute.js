@@ -8,14 +8,15 @@ export const ProtectedRoute = ({ ...rest }) => {
   const history = useHistory();
   let { user } = useAuth();
   if (!user || !user.token || user.token === "") {
-    return (
-      <SweetAlert
-        title="You must be signed in!"
-        onCancel={() => history.push("/auth/signin")}
-        onConfirm={() => history.push("/auth/signin")}
-        confirmBtnCssClass={"px-5"}
-      />
-    );
+    // return (
+    //   <SweetAlert
+    //     title="You must be signed in!"
+    //     onCancel={() => history.push("/auth/signin")}
+    //     onConfirm={() => history.push("/auth/signin")}
+    //     confirmBtnCssClass={"px-5"}
+    //   />
+    // );
+    history.push("/auth/signin");
   }
 
   return <Route {...rest} />;
