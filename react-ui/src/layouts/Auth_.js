@@ -15,7 +15,7 @@ export default function Pages(props) {
   React.useEffect(() => {
     document.body.style.overflow = "unset";
     // Specify how to clean up after this effect:
-    return function cleanup() {};
+    return function cleanup() { };
   });
   const getActiveRoute = (routes) => {
     let activeRoute = "Default Brand Text";
@@ -89,7 +89,7 @@ export default function Pages(props) {
         <Portal containerRef={navRef}>
           <AuthNavbar
             secondary={getActiveNavbar(routes)}
-            logoText="Math-based Web Game"
+            logoText="Acclaim Interactive Web Game"
           />
         </Portal>
         <Box w="100%">

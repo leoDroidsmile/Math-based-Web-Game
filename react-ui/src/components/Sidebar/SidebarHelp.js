@@ -16,8 +16,8 @@ export function SidebarHelp(props) {
       <Image
         src={logo1}
         alt="logo1 image"
-        width="180px" height="180px"
-        style={{ marginLeft: "30px" }}
+        width="180px" height="135px"
+        style={{ marginLeft: "20px", marginTop: "30px", marginBottom: "30px" }}
       />
       <Image
         src={logo2}

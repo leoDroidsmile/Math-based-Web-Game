@@ -89,7 +89,7 @@ export default function Pages(props) {
         {/* <Portal containerRef={navRef}>
           <AuthNavbar
             secondary={getActiveNavbar(routes)}
-            logoText="Math-based Web Game"
+            logoText="Acclaim Interactive Web Game"
           />
         </Portal> */}
         <Box w="100%">

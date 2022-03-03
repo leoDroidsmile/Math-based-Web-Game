@@ -33,7 +33,6 @@ import {
 import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from "react-router-dom";
 import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
-import logo from "../../assets/img/logo-signup.jpg";
 import AuthApi from "../../api/auth";
 
 import avatar1 from "../../assets/img/signup/1.PNG";
@@ -44,7 +43,7 @@ import avatar5 from "../../assets/img/signup/5.png";
 import avatar6 from "../../assets/img/signup/6.png";
 import avatar7 from "../../assets/img/signup/7.png";
 import '../../assets/css/SignUp.css';
-
+import SBOX from '../../components/sbox/sbox';
 import SurveyCard from 'components/surveyCard';
 import { column } from 'stylis';
 
@@ -136,30 +135,7 @@ export default function SignUp() {
             templateColumns='repeat(3, 1fr)'
           >
             <GridItem colSpan={1} bg="#f27924" borderRadius="35px 0 0 35px" color="white" >
-              <Box p={10} display="flex" justifyContent="center">
-                <Box >
-                  <Box >
-                    <Image
-                      src={logo}
-                      alt="youth man image"
-                      width="220px" height="220px"
-                    />
-                  </Box>
-                  <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
-                    <VStack pl={0} spacing={3} alignItems="flex-start">
-                      <Heading width="220px">
-                        A Revolution In Learning Accounting!
-                      </Heading>
-                      <Text width="220px" fontSize="xs">
-                        You've just been hired as a junior accountant at ACC Partners. Your first client is up-and coming DJ "Moe Money".
-                      </Text>
-                      <Text width="220px" fontSize="xs">
-                        Start your virtual co-op experience today and learn Intro to accounting on your own time.
-                      </Text>
-                    </VStack>
-                  </Box>
-                </Box>
-              </Box>
+              <SBOX />
             </GridItem>
             <GridItem colSpan={2} className='grid_1'>
               <Box bg="white" borderRadius="0 35px 35px 0" style={{ width: "100%", height: "100%" }} >
@@ -170,7 +146,9 @@ export default function SignUp() {
                   <GridItem colSpan={1} color="gray.500" p={5} className='grid_item1'>
                     <Flex flexDirection="column" justify={'center'} align={'center'} className='flex_1'>
                       <Stack spacing={5} minH={'70vh'} style={{ width: "100%" }} justify={'center'} align={'center'} className='stack_1'>
-                        <Heading fontSize="24px" mb="30px" class='title_signup'>Create Your Account</Heading>
+                        <div style={{ width: '100%', textAlign: 'center', fontSize: '20px', marginBottom: '5px', fontWeight: 'bold' }}>
+                          <h1>Create Your Account</h1>
+                        </div>
                         <FormControl id="firstname" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
                             <Input type="text" size="sm" placeholder="First Name" borderRadius="10px" onChange={(event) => {
@@ -254,7 +232,7 @@ export default function SignUp() {
                   <GridItem colSpan={1} color="gray.500" p={5} >
                     <Flex justify={'center'} align={'center'}  >
                       <Stack minH={'70vh'} style={{ width: "100%" }} justify={'center'} align={'center'}>
-                        <Heading fontSize="18px" color="gray.400">Select your Avatar</Heading>
+                        <h1 style={{ fontSize: "13px" }}>Select your Avatar</h1>
                         <Grid templateColumns='repeat(3, 1fr)' onChange={(e) => { setAvatar(e.target.nextSibling.src); setError(undefined); }} >
                           <SurveyCard img={avatar1} id="1" />
                           <SurveyCard img={avatar2} id="2" />

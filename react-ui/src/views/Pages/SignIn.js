@@ -12,13 +12,19 @@ import {
   Switch,
   Text,
   Image,
+  Grid,
+  GridItem,
   useColorModeValue,
+  Container
 } from "@chakra-ui/react";
 // Assets
 import signInImage from "assets/img/SidebarHelpImage.png";
 
+import '../../assets/css/SignIn.css';
+
 import { useAuth } from "../../auth-context/auth.context";
 import AuthApi from "../../api/auth";
+import SBOX from '../../components/sbox/sbox';
 
 import { NavLink, useHistory } from "react-router-dom";
 import logo1 from "assets/img/6.jpg";
@@ -89,195 +95,168 @@ function SignIn() {
   };
 
   return (
-    <Flex position="relative" mb="40px">
-      <Flex
-        h={{ sm: "initial", md: "75vh", lg: "85vh" }}
-        w="100%"
-        maxW="1044px"
-        mx="auto"
-        justifyContent="center"
-        mb="30px"
-        pt={{ sm: "100px", md: "0px" }}
+    <Container bg="#64cce4" maxW="full" minH="100vh" overflow="hidden" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Grid
+        templateColumns='repeat(3, 1fr)'
+        style={{ width: '990px' }}
       >
+        <GridItem colSpan={1} bg="#f27924" borderRadius="35px 0 0 35px" color="white" >
+          <SBOX />
+        </GridItem>
+        <GridItem colSpan={2} bg="white" borderRadius="0 35px 35px 0" >
 
-        {/* <Box
-          display={{ base: "none", md: "block" }}
-          overflowX="hidden"
-          h="100%"
-          w="40vw"
-          position="absolute"
-          left="0px"
-        >
-          <Box
-            bgImage={signInImage}
+          <Flex
+            h={{ sm: "initial" }}
             w="100%"
-            h="100%"
-            bgSize="cover"
-            bgPosition="50%"
-            position="absolute"
-            borderBottomLeftRadius="20px"
-          ></Box>
-        </Box> */}
+            mx="auto"
+            justifyContent="center"
+            mb="30px"
+            pt={{ sm: "100px" }}
+            style={{ height: '600px' }}
+          >
 
-        <Flex
-          alignItems="center"
-          justifyContent="end"
-          style={{ userSelect: "none" }}
-          w={{ base: "100%", md: "50%", lg: "42%" }}
-        >
-          {user && user.token ?
-            <div>
-              <Heading color={titleColor} fontSize="32px" mt="10px" mb="10px">
-                Welcome Back
-              </Heading>
-              <h3 style={{ textAlign: "center" }}>You are already signed in.</h3>
-              <Button
-                fontSize="15px"
-                type="submit"
-                bg="teal.300"
-                w="100%"
-                h="45"
-                mb="20px"
-                color="white"
-                mt="20px"
-                _hover={{
-                  bg: "teal.200",
-                }}
-                _active={{
-                  bg: "teal.400",
-                }}
-                onClick={login}>
-                {`Let's go`}
-              </Button>
-            </div>
-            :
             <Flex
-              direction="column"
-              w="100%"
-              background="transparent"
-              p="30px"
-              mt={{ md: "10px", lg: "80px" }}
+              alignItems="center"
+              justifyContent="end"
+              style={{ userSelect: "none" }}
+              w={{ base: "100%" }}
+              style={{ display: 'flex', justifyContent: 'center' }}
+              mb='50px'
             >
-              {/* <Heading color={titleColor} fontSize="32px" mt="10px" mb="10px">
-                Math-based Game
-              </Heading> */}
+              {user && user.token ?
+                <div>
+                  <Heading color={titleColor} fontSize="32px" mt="10px" mb="10px">
+                    Welcome Back
+                  </Heading>
+                  <h3 style={{ textAlign: "center" }}>You are already signed in.</h3>
+                  <Button
+                    fontSize="15px"
+                    type="submit"
+                    bg="teal.300"
+                    w="100%"
+                    h="45"
+                    mb="20px"
+                    color="white"
+                    mt="20px"
+                    _hover={{
+                      bg: "teal.200",
+                    }}
+                    _active={{
+                      bg: "teal.400",
+                    }}
+                    onClick={login}>
+                    {`Let's go`}
+                  </Button>
+                </div>
+                :
+                <div
+                  direction="column"
+                  background="transparent"
+                  p="5px"
+                  style={{}}
 
-              <Image
-                src={logo1}
-                alt="logo1 image"
-                style={{ marginLeft: "45px", marginBottom: "30px" }}
-                w="70%"
-              />
+                >
 
-              {/* <Text
-                mb="36px"
-                ms="4px"
-                color={textColor}
-                fontWeight="bold"
-                fontSize="14px"
-              >
-                Enter your email and password to sign in
-              </Text> */}
-              <FormControl>
-                <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-                  Email
-                </FormLabel>
-                <Input
-                  borderRadius="15px"
-                  mb="24px"
-                  fontSize="sm"
-                  type="text"
-                  placeholder="Your email adress"
-                  size="lg"
-                  defaultValue={email}
-                  onChange={(event) => {
-                    setEmail(event.target.value);
-                    setError(undefined);
-                  }}
-                />
-                <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-                  Password
-                </FormLabel>
-                <Input
-                  borderRadius="15px"
-                  mb="36px"
-                  fontSize="sm"
-                  type="password"
-                  placeholder="Your password"
-                  size="lg"
-                  defaultValue={password}
-                  onChange={(event) => {
-                    setPassword(event.target.value);
-                    setError(undefined);
-                  }}
-                />
-                <FormControl display="flex" alignItems="center">
-                  <Switch id="remember-login" colorScheme="teal" me="10px" />
-                  <FormLabel
-                    htmlFor="remember-login"
-                    mb="1"
-                    ms="1"
-                    fontWeight="normal"
+                  <FormControl style={{ color: '#718096' }}>
+                    <div style={{ width: '100%', textAlign: 'center', fontSize: '25px', marginBottom: '40px', fontWeight: 'bold' }}>
+                      <h1>Login To Your Account</h1>
+                    </div>
+
+                    <Input
+                      borderRadius="10px"
+                      mb="24px"
+                      fontSize="sm"
+                      type="text"
+                      placeholder="Your email adress"
+                      size="md"
+                      defaultValue={email}
+                      onChange={(event) => {
+                        setEmail(event.target.value);
+                        setError(undefined);
+                      }}
+                    />
+                    <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
+                    </FormLabel>
+                    <Input
+                      borderRadius="10px"
+                      mb="36px"
+                      fontSize="sm"
+                      type="password"
+                      placeholder="Your password"
+                      size="md"
+                      defaultValue={password}
+                      onChange={(event) => {
+                        setPassword(event.target.value);
+                        setError(undefined);
+                      }}
+                    />
+                    <FormControl display="flex" alignItems="center">
+                      <Switch id="remember-login" colorScheme="teal" me="10px" />
+                      <FormLabel
+                        htmlFor="remember-login"
+                        mb="1"
+                        ms="1"
+                        fontWeight="normal"
+                      >
+                        Remember me
+                      </FormLabel>
+
+                    </FormControl>
+                    <h4
+                      style={{
+                        fontSize: ".9em",
+                        color: "red",
+                        textAlign: "center",
+                        fontWeight: 400,
+                        transition: ".2s all",
+                      }}
+                    >
+                      {error}
+                    </h4>
+                    <Button
+                      size="sm"
+                      type="submit"
+                      bg="teal.300"
+                      w="90%"
+                      mb="20px"
+                      color="white"
+                      mt="20px"
+                      ml="20px"
+                      _hover={{
+                        bg: "teal.200",
+                      }}
+                      _active={{
+                        bg: "teal.400",
+                      }}
+                      borderRadius="10px"
+                      onClick={login}
+                      style={{ backgroundColor: '#00bcef' }}
+                    >
+                      {buttonText}
+                    </Button>
+                  </FormControl>
+                  <Box color="gray.600" style={{ display: "flex", justifyContent: "center" }}>
+                    Don't have an account?{" "}
+                    <NavLink to="/auth/signup" style={{ marginLeft: "10px", color: '#4da6ff' }}>
+                      Sign up
+                    </NavLink>
+                  </Box>
+                  <Flex
+                    flexDirection="column"
+                    justifyContent="center"
+                    alignItems="center"
+                    maxW="100%"
+                    mt="0px"
                   >
-                    Remember me
-                  </FormLabel>
-
-                </FormControl>
-                <h4
-                  style={{
-                    fontSize: ".9em",
-                    color: "red",
-                    textAlign: "center",
-                    fontWeight: 400,
-                    transition: ".2s all",
-                  }}
-                >
-                  {error}
-                </h4>
-                <Button
-                  size="sm"
-                  type="submit"
-                  bg="teal.300"
-                  w="90%"
-                  mb="20px"
-                  color="white"
-                  mt="20px"
-                  ml="20px"
-                  _hover={{
-                    bg: "teal.200",
-                  }}
-                  _active={{
-                    bg: "teal.400",
-                  }}
-                  borderRadius="10px"
-                  onClick={login}
-                >
-                  {buttonText}
-                </Button>
-              </FormControl>
-              <Box color="gray.600" style={{ display: "flex", justifyContent: "center" }}>
-                Don't have an account?{" "}
-                <NavLink to="/auth/signup" style={{ marginLeft: "10px", color: '#4da6ff' }}>
-                  Sign up
-                </NavLink>
-              </Box>
-              <Flex
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-                maxW="100%"
-                mt="0px"
-              >
-                {/* <Text color={textColor} fontWeight="medium">
-                  Open-source Full-Stack Seed Project
-                </Text> */}
-              </Flex>
+                  </Flex>
+                </div>
+              }
             </Flex>
-          }
-        </Flex>
+          </Flex>
 
-      </Flex>
-    </Flex>
+        </GridItem>
+      </Grid>
+    </Container>
   );
 }
 
