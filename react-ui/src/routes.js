@@ -86,14 +86,15 @@ var dashRoutes = [
     layout: "/auth",
     hide: true
   },
-  //     {
-  //       path: "/signout",
-  //       name: "Logout",
-  //       rtlName: "لوحة القيادة",
-  //       icon: <RocketIcon color="inherit" />,
-  //       component: SignOut,
-  //       layout: "/auth",
-  //     },
+  // {
+  //   path: "/signout",
+  //   name: "Sign Out",
+  //   rtlName: "لوحة القيادة",
+  //   icon: <RocketIcon color="inherit" />,
+  //   component: SignOut,
+  //   layout: "/auth",
+  //   hide: true
+  // },
   //   ],
   // },
 ];

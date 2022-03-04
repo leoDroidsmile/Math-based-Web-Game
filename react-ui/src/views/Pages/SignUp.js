@@ -133,6 +133,7 @@ export default function SignUp() {
         <Box style={{ borderRadius: "35px", marginTop: "50px", marginBottom: "30px" }} className='big_box'>
           <Grid
             templateColumns='repeat(3, 1fr)'
+            style={{ width: '990px' }}
           >
             <GridItem colSpan={1} bg="#f27924" borderRadius="35px 0 0 35px" color="white" >
               <SBOX />
@@ -151,7 +152,7 @@ export default function SignUp() {
                         </div>
                         <FormControl id="firstname" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="First Name" borderRadius="10px" onChange={(event) => {
+                            <Input type="text" size="sm" placeholder="First Name" borderRadius="10px" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setFirstName(event.target.value);
                               setError(undefined);
                             }} />
@@ -159,7 +160,7 @@ export default function SignUp() {
                         </FormControl>
                         <FormControl id="lastname" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="Last Name" borderRadius="10px" onChange={(event) => {
+                            <Input type="text" size="sm" placeholder="Last Name" borderRadius="10px" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setLastName(event.target.value);
                               setError(undefined);
                             }} />
@@ -167,7 +168,7 @@ export default function SignUp() {
                         </FormControl>
                         <FormControl id="emailaddress" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
-                            <Input type="email" size="sm" placeholder="Email Address" borderRadius="10px" onChange={(event) => {
+                            <Input type="email" size="sm" placeholder="Email Address" borderRadius="10px" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setEmail(event.target.value);
                               setError(undefined);
                             }} />
@@ -175,7 +176,7 @@ export default function SignUp() {
                         </FormControl>
                         <FormControl id="school" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="School" borderRadius="10px" onChange={(event) => {
+                            <Input type="text" size="sm" placeholder="School" borderRadius="10px" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setSchool(event.target.value);
                               setError(undefined);
                             }} />
@@ -183,7 +184,7 @@ export default function SignUp() {
                         </FormControl>
                         <FormControl id="classs" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="Class#" borderRadius="10px" onChange={(event) => {
+                            <Input type="text" size="sm" placeholder="Class#" borderRadius="10px" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setClasss(event.target.value);
                               setError(undefined);
                             }} />
@@ -191,7 +192,7 @@ export default function SignUp() {
                         </FormControl>
                         <FormControl id="username" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="Choose a Username" borderRadius="10px" onChange={(event) => {
+                            <Input type="text" size="sm" placeholder="Choose a Username" onKeyPress={(e) => e.key === 'Enter' && register()} borderRadius="10px" onChange={(event) => {
                               setUsername(event.target.value);
                               setError(undefined);
                             }} />
@@ -199,7 +200,7 @@ export default function SignUp() {
                         </FormControl>
                         <FormControl id="password" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
-                            <Input type="password" size="sm" placeholder="Set Password" borderRadius="10px" onChange={(event) => {
+                            <Input type="password" size="sm" placeholder="Set Password" onKeyPress={(e) => e.key === 'Enter' && register()} borderRadius="10px" onChange={(event) => {
                               setPassword(event.target.value);
                               setError(undefined);
                             }} />
@@ -207,7 +208,7 @@ export default function SignUp() {
                         </FormControl>
                         <FormControl id="rpassword" style={{ marginTop: "10px" }}>
                           <InputGroup borderColor="#E0E1E7">
-                            <Input type="password" size="sm" placeholder="Verify Password" borderRadius="10px" onChange={(event) => {
+                            <Input type="password" size="sm" placeholder="Verify Password" onKeyPress={(e) => e.key === 'Enter' && register()} borderRadius="10px" onChange={(event) => {
                               setRPassword(event.target.value);
                               setError(undefined);
                             }} />

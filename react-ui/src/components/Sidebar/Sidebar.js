@@ -76,6 +76,7 @@ function Sidebar(props) {
                 xl: "16px",
               }}
               py="12px"
+              key={key}
             >
               {document.documentElement.dir === "rtl"
                 ? prop.rtlName
@@ -304,6 +305,7 @@ export function SidebarResponsive(props) {
                 xl: "16px",
               }}
               py="12px"
+              key={key}
             >
               {document.documentElement.dir === "rtl"
                 ? prop.rtlName

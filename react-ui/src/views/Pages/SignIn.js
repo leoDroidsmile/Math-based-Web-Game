@@ -170,6 +170,8 @@ function SignIn() {
                       placeholder="Your email adress"
                       size="md"
                       defaultValue={email}
+                      id="uEmail"
+                      onKeyPress={(e) => e.key === 'Enter' && login()}
                       onChange={(event) => {
                         setEmail(event.target.value);
                         setError(undefined);
@@ -182,9 +184,11 @@ function SignIn() {
                       mb="36px"
                       fontSize="sm"
                       type="password"
+                      id="uPassword"
                       placeholder="Your password"
                       size="md"
                       defaultValue={password}
+                      onKeyPress={(e) => e.key === 'Enter' && login()}
                       onChange={(event) => {
                         setPassword(event.target.value);
                         setError(undefined);

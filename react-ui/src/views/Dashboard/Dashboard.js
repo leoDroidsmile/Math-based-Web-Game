@@ -25,6 +25,8 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
+// import ReactPlayer from "react-player";
 // assets
 import peopleImage from "assets/img/people-image.png";
 import oldMan from "assets/img/1.PNG";
@@ -33,6 +35,7 @@ import Man from "assets/img/3.PNG";
 import Woman from "assets/img/4.PNG";
 import youthMan from "assets/img/5.PNG";
 import logoChakra from "assets/svg/logo-white.svg";
+import VideoPlay from "./VideoPlay";
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -41,6 +44,8 @@ import ReadMoreText from "components/Card/ReadMoreText.js";
 import BarChart from "components/Charts/BarChart";
 import LineChart from "components/Charts/LineChart";
 import IconBox from "components/Icons/IconBox";
+import AuthApi from "../../api/auth";
+import { useAuth } from "../../auth-context/auth.context";
 // Custom icons
 import {
   CartIcon,
@@ -52,7 +57,7 @@ import {
 } from "components/Icons/Icons.js";
 import DashboardTableRow from "components/Tables/DashboardTableRow";
 import TimelineRow from "components/Tables/TimelineRow";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 // react icons
 import { BsArrowRight, BsCardImage } from "react-icons/bs";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
@@ -61,11 +66,14 @@ import { CardComponent } from "theme/additions/card/Card";
 
 export default function Dashboard() {
   const value = "$100.000";
+  const history = useHistory();
   // Chakra Color Mode
   const { colorMode, toggleColorMode } = useColorMode();
   const iconTeal = useColorModeValue("teal.300", "teal.300");
   const iconBoxInside = useColorModeValue("white", "white");
   const textColor = useColorModeValue("gray.400", "white");
+  const { setUser } = useAuth();
+  let { user } = useAuth();
   const [series, setSeries] = useState([
     {
       type: "area",
@@ -80,15 +88,23 @@ export default function Dashboard() {
   ]);
   const overlayRef = React.useRef();
 
+  const SignOut = async () => {
+    await AuthApi.Logout(user);
+    await setUser(null);
+    localStorage.removeItem("user");
+    return history.push("/auth/signin");
+  }
+
   return (
     <Box w="100%" h="100%" backgroundColor="gray.200" padding="5" >
+      <VideoPlay />
       <FormControl>
         <Stack direction='row' spacing={4} style={{ position: "absolute", right: "0" }}>
-          <Button colorScheme='telegram' backgroundColor="blue.200" variant='solid' width="100px;" size="sm" >
+          <Button colorScheme='telegram' backgroundColor="blue.200" variant='solid' width="100px;" size="sm">
             Settings
           </Button>
-          <Button colorScheme='telegram' backgroundColor="blue.400" variant='solid' width="100px;" size="sm" >
-            Menu
+          <Button colorScheme='telegram' backgroundColor="blue.400" variant='solid' width="100px;" size="sm" onClick={SignOut}>
+            Logout
           </Button>
         </Stack>
       </FormControl>
