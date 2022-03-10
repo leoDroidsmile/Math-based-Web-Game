@@ -118,9 +118,8 @@ function SignIn() {
             <Flex
               alignItems="center"
               justifyContent="end"
-              style={{ userSelect: "none" }}
               w={{ base: "100%" }}
-              style={{ display: 'flex', justifyContent: 'center' }}
+              style={{ display: 'flex', justifyContent: 'center', userSelect: "none" }}
               mb='50px'
             >
               {user && user.token ?
@@ -181,7 +180,7 @@ function SignIn() {
                     </FormLabel>
                     <Input
                       borderRadius="10px"
-                      mb="36px"
+                      mb="24px"
                       fontSize="sm"
                       type="password"
                       id="uPassword"
@@ -194,6 +193,10 @@ function SignIn() {
                         setError(undefined);
                       }}
                     />
+
+                    <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
+                    </FormLabel>
+
                     <FormControl display="flex" alignItems="center">
                       <Switch id="remember-login" colorScheme="teal" me="10px" />
                       <FormLabel
@@ -203,6 +206,10 @@ function SignIn() {
                         fontWeight="normal"
                       >
                         Remember me
+                        <NavLink to="/auth/forgot-password" style={{ marginLeft: "10px", color: '#4da6ff', fontSize: "14px" }}>
+                          Forgot Password?
+                        </NavLink>
+
                       </FormLabel>
 
                     </FormControl>
@@ -260,7 +267,7 @@ function SignIn() {
 
         </GridItem>
       </Grid>
-    </Container>
+    </Container >
   );
 }
 

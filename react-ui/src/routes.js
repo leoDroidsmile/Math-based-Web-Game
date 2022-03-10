@@ -6,6 +6,8 @@ import RTLPage from "views/RTL/RTLPage.js";
 import Profile from "views/Dashboard/Profile.js";
 import SignIn from "views/Pages/SignIn.js";
 import SignUp from "views/Pages/SignUp.js";
+import ForgotPassword from "views/Pages/ForgotPassword";
+import ResetPassword from "views/Pages/ResetPassword";
 import SignOut from "views/Pages/SignOut.js";
 
 import {
@@ -83,6 +85,26 @@ var dashRoutes = [
     icon: <RocketIcon color="inherit" />,
     // secondaryNavbar: true,
     component: SignUp,
+    layout: "/auth",
+    hide: true
+  },
+  {
+    path: "/forgot-password",
+    name: "Forgot Password",
+    rtlName: "لوحة القيادة",
+    icon: <RocketIcon color="inherit" />,
+    // secondaryNavbar: true,
+    component: ForgotPassword,
+    layout: "/auth",
+    hide: true
+  },
+  {
+    path: "/reset-password",
+    name: "Reset Password",
+    rtlName: "لوحة القيادة",
+    icon: <RocketIcon color="inherit" />,
+    // secondaryNavbar: true,
+    component: ResetPassword,
     layout: "/auth",
     hide: true
   },

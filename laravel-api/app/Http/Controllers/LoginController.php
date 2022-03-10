@@ -22,6 +22,12 @@ class LoginController extends Controller
             ]);
         }
 
+        if(! Auth::user()->hasVerifiedEmail())
+            return response()->json([
+                'success' => false,
+                'msg' => 'Email is not verified.',
+            ]);
+
         return response()->json([
             'success' => true,
             'token' => $token,

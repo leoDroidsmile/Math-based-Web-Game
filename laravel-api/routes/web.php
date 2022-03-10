@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VerifyEmailController;
+use App\Http\Controllers\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//
+// Verify email
+Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+    ->middleware(['signed', 'throttle:6,1'])
+    ->name('verification.verify');
+
+
+// Reset Passwowrd
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'redirectResetPassword'])
+    ->middleware(['guest'])
+    ->name('password.reset');

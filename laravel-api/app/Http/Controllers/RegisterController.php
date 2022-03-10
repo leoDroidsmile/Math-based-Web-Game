@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+
 
 class RegisterController extends Controller
 {
@@ -16,11 +18,11 @@ class RegisterController extends Controller
      */
     public function __invoke(Request $request)
     {
-        // $request->validate([
-        //     'username' => ['nullable', 'string'],
-        //     'email' => ['required', 'email'],
-        //     'password' => ['required', 'string'],
-        // ]);
+        $request->validate([
+            'username' => ['nullable', 'string'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string'],
+        ]);
 
         
         if (User::whereUsername($request->username)->exists()) {
@@ -34,6 +36,12 @@ class RegisterController extends Controller
         $user = User::create(array_merge($request->all(), [
             'password' => Hash::make($request->password),
         ]));
+
+        error_log($request->all);
+        
+        event(new Registered($user));
+
+        // auth()->login($user);
 
         return response()->json([
             'success' => true,

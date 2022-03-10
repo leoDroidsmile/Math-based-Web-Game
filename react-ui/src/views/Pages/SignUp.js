@@ -118,7 +118,8 @@ export default function SignUp() {
       if (response.data && response.data.success === false) {
         return setError(response.data.msg);
       }
-      return history.push("/auth/signin");
+      setError("Email Verifying...");
+      // return history.push("/auth/signin");
     } catch (err) {
       console.log(err);
       if (err.response) {

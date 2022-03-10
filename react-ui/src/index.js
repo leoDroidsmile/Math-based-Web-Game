@@ -20,7 +20,6 @@ import ReactDOM from "react-dom";
 import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import AuthLayout from "layouts/Auth.js";
-import SignupLayout from "layouts/Signup.js";
 import AdminLayout from "layouts/Admin.js";
 import RTLLayout from "layouts/RTL.js";
 
@@ -35,6 +34,8 @@ ReactDOM.render(
       <Switch>
         <Route exact path={`/auth/signin`} component={AuthLayout} />
         <Route path={`/auth/signup`} component={AuthLayout} />
+        <Route path={`/auth/forgot-password`} component={AuthLayout} />
+        <Route path={`/auth/reset-password`} component={AuthLayout} />
         <ProtectedRoute path={`/admin`} component={AdminLayout} />
         <ProtectedRoute path={`/rtl`} component={RTLLayout} />
         <Redirect from={`/`} to="/admin/dashboard" />

@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useEffect, useState, useRef } from 'react';
 import ReactPlayer from "react-player";
 import {
     Modal,
@@ -13,25 +13,30 @@ import {
 } from '@chakra-ui/react'
 
 export default function SizeExample() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const player = useRef(null);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const VideoFullscreen = () => {
+    }
 
     useEffect(() => {
-        onOpen()
+        onOpen(),
+            VideoFullscreen();
     }, []);
 
     return (
         <div className="player-wrapper">
-            <Modal onClose={onClose} size="6xl" isOpen={isOpen}>
+            <Modal onClose={onClose} size="full" isOpen={isOpen} >
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Video Player</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
+                    <ModalBody
+                    >
                         <ReactPlayer
+                            ref={player}
                             className='react-player'
                             url="https://stream.mux.com/D02iof00VDpNaWN02ZsrY4csqBi8jmz02OtR"
                             width="100%"
-                            height="auto"
+                            height="100%"
                             controls
                             playing={isOpen}
                             config={{ file: { forceHLS: true } }}
