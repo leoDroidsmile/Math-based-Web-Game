@@ -16,12 +16,8 @@ export default function SizeExample() {
     const player = useRef(null);
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const VideoFullscreen = () => {
-    }
-
     useEffect(() => {
-        onOpen(),
-            VideoFullscreen();
+        onOpen()
     }, []);
 
     return (
