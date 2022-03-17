@@ -37,6 +37,8 @@ export default function SizeExample() {
                             playing={isOpen}
                             config={{ file: { forceHLS: true } }}
                             style={{ position: 'absolute', top: '0', left: '0' }}
+                            onEnded={onClose}
+
                         />
                     </ModalBody>
                     {/* <ModalFooter>
