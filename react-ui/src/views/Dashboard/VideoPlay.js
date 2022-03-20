@@ -30,7 +30,7 @@ export default function SizeExample() {
                         <ReactPlayer
                             ref={player}
                             className='react-player'
-                            url={['Acclaim_Intro_Video.m4v']}
+                            url={['video/Acclaim_Intro_Video.m4v']}
                             width="100%"
                             height="100%"
                             controls
