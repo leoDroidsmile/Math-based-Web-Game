@@ -35,6 +35,7 @@ export default function SizeExample() {
                             height="100%"
                             controls
                             playing={isOpen}
+                            muted='true'
                             config={{ file: { forceHLS: true } }}
                             style={{ position: 'absolute', top: '0', left: '0' }}
                             onEnded={onClose}
