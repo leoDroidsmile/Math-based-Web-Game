@@ -12,6 +12,8 @@ import {
     Button
 } from '@chakra-ui/react'
 
+import intro_video from "assets/video/Acclaim_Intro_Video.m4v";
+
 export default function SizeExample() {
     const player = useRef(null);
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -30,7 +32,7 @@ export default function SizeExample() {
                         <ReactPlayer
                             ref={player}
                             className='react-player'
-                            url="https://stream.mux.com/D02iof00VDpNaWN02ZsrY4csqBi8jmz02OtR"
+                            url={intro_video}
                             width="100%"
                             height="100%"
                             controls
