@@ -42,7 +42,7 @@ class VerifyEmailController extends Controller
 
         if ($user->hasVerifiedEmail()){
             // return redirect(env('FRONT_URL') . '/email/verify/already-success');
-            return redirect(env('FRONT_URL'));
+            return redirect(config('constants.FRONTEND_URL'));
         }
 
         if ($user->markEmailAsVerified()) {
@@ -50,6 +50,6 @@ class VerifyEmailController extends Controller
         }
 
         // return redirect(env('FRONT_URL') . '/email/verify/success');
-        return redirect(env('FRONT_URL'));
+        return redirect(config('constants.FRONTEND_URL'));
     }
 }

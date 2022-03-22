@@ -34,15 +34,11 @@ class ResetPasswordController extends Controller
                     'password' => Hash::make($password)
                 ])->save();
     
-                error_log("bbbbbbb");
-
                 $user->setRememberToken(Str::random(60));
     
                 event(new PasswordReset($user));
             }
         );
-
-        error_log("fdsjaflsda");
     
         if($status == Password::PASSWORD_RESET)
             response()->json([
@@ -57,6 +53,7 @@ class ResetPasswordController extends Controller
     }
 
     public function redirectResetPassword(Request $request) : RedirectResponse {
-        return redirect(env('FRONT_URL') . '/#/auth/reset-password' . '?token=' . $request->token . '&email=' . $request->email);
+
+        return redirect(config('constants.FRONTEND_URL') . '/#/auth/reset-password' . '?token=' . $request->token . '&email=' . $request->email);
     }
 }
