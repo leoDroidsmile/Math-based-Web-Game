@@ -1,3 +1,12 @@
 .gridItem_1 {
     height: 600px !important;
 }
+
+
+input {
+    border-radius: 10px !important;    
+}
+
+input:hover{
+    border-color:#718096 !important;
+}

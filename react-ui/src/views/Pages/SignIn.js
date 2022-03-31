@@ -162,6 +162,7 @@ function SignIn() {
                     </div>
 
                     <Input
+                      borderColor="gray.500" color="gray.700"
                       borderRadius="10px"
                       mb="24px"
                       fontSize="sm"
@@ -179,6 +180,7 @@ function SignIn() {
                     <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
                     </FormLabel>
                     <Input
+                      borderColor="gray.500" color="gray.700"
                       borderRadius="10px"
                       mb="24px"
                       fontSize="sm"

@@ -151,65 +151,65 @@ export default function SignUp() {
                         <div style={{ width: '100%', textAlign: 'center', fontSize: '20px', marginBottom: '5px', fontWeight: 'bold' }}>
                           <h1>Create Your Account</h1>
                         </div>
-                        <FormControl id="firstname" style={{ marginTop: "10px" }}>
-                          <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="First Name" borderRadius="10px" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
+                        <FormControl id="firstname">
+                          <InputGroup>
+                            <Input type="text" borderColor="gray.500" color="gray.700" size="sm" placeholder="First Name" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setFirstName(event.target.value);
                               setError(undefined);
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="lastname" style={{ marginTop: "10px" }}>
-                          <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="Last Name" borderRadius="10px" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
+                        <FormControl id="lastname">
+                          <InputGroup>
+                            <Input type="text" borderColor="gray.500" color="gray.700" size="sm" placeholder="Last Name" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setLastName(event.target.value);
                               setError(undefined);
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="emailaddress" style={{ marginTop: "10px" }}>
-                          <InputGroup borderColor="#E0E1E7">
-                            <Input type="email" size="sm" placeholder="Email Address" borderRadius="10px" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
+                        <FormControl id="emailaddress">
+                          <InputGroup>
+                            <Input type="email" borderColor="gray.500" color="gray.700" size="sm" placeholder="Email Address" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setEmail(event.target.value);
                               setError(undefined);
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="school" style={{ marginTop: "10px" }}>
-                          <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="School" borderRadius="10px" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
+                        <FormControl id="school">
+                          <InputGroup>
+                            <Input type="text" borderColor="gray.500" color="gray.700" size="sm" placeholder="School" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setSchool(event.target.value);
                               setError(undefined);
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="classs" style={{ marginTop: "10px" }}>
-                          <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="Class#" borderRadius="10px" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
+                        <FormControl id="classs">
+                          <InputGroup>
+                            <Input type="text" borderColor="gray.500" color="gray.700" size="sm" placeholder="Class#" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setClasss(event.target.value);
                               setError(undefined);
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="username" style={{ marginTop: "10px" }}>
-                          <InputGroup borderColor="#E0E1E7">
-                            <Input type="text" size="sm" placeholder="Choose a Username" onKeyPress={(e) => e.key === 'Enter' && register()} borderRadius="10px" onChange={(event) => {
+                        <FormControl id="username">
+                          <InputGroup>
+                            <Input type="text" borderColor="gray.500" color="gray.700" size="sm" placeholder="Choose a Username" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setUsername(event.target.value);
                               setError(undefined);
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="password" style={{ marginTop: "10px" }}>
-                          <InputGroup borderColor="#E0E1E7">
-                            <Input type="password" size="sm" placeholder="Set Password" onKeyPress={(e) => e.key === 'Enter' && register()} borderRadius="10px" onChange={(event) => {
+                        <FormControl id="password">
+                          <InputGroup>
+                            <Input type="password" borderColor="gray.500" color="gray.700" size="sm" placeholder="Set Password" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setPassword(event.target.value);
                               setError(undefined);
                             }} />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="rpassword" style={{ marginTop: "10px" }}>
-                          <InputGroup borderColor="#E0E1E7">
-                            <Input type="password" size="sm" placeholder="Verify Password" onKeyPress={(e) => e.key === 'Enter' && register()} borderRadius="10px" onChange={(event) => {
+                        <FormControl id="rpassword">
+                          <InputGroup>
+                            <Input type="password" borderColor="gray.500" color="gray.700" size="sm" placeholder="Verify Password" onKeyPress={(e) => e.key === 'Enter' && register()} onChange={(event) => {
                               setRPassword(event.target.value);
                               setError(undefined);
                             }} />
@@ -254,7 +254,7 @@ export default function SignUp() {
                             _hover={{}}
                             maxW="full"
                             minW="full"
-                            borderRadius="10px"
+
                             onClick={register}
                             marginTop='1em'
                           >

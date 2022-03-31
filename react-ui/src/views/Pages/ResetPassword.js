@@ -159,6 +159,7 @@ function ResetPassword() {
                     <FormControl id="password" style={{ marginTop: "10px" }}>
                       <InputGroup borderColor="#E0E1E7">
                         <Input
+                          borderColor="gray.500" color="gray.700"
                           borderRadius="10px"
                           mb="15px"
                           fontSize="sm"
@@ -177,6 +178,7 @@ function ResetPassword() {
                     <FormControl id="rpassword" style={{ marginTop: "10px" }}>
                       <InputGroup borderColor="#E0E1E7">
                         <Input
+                          borderColor="gray.500" color="gray.700"
                           borderRadius="10px"
                           mb="15px"
                           fontSize="sm"

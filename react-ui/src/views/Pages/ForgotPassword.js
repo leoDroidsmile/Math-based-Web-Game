@@ -152,6 +152,7 @@ function ForgotPassword() {
                     <FormControl id="password" style={{ marginTop: "10px" }}>
                       <InputGroup borderColor="#E0E1E7">
                         <Input
+                          borderColor="gray.500" color="gray.700"
                           borderRadius="10px"
                           mb="24px"
                           fontSize="sm"

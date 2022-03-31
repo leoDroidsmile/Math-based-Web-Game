@@ -19,6 +19,14 @@
     width: 200px !important;
 }
 
+input {
+    border-radius: 10px !important;    
+}
+
+input:hover{
+    border-color:#718096 !important;
+}
+
 @media screen and (max-width: 1015px) {
     /* .big_box {
         width: 1015px;
