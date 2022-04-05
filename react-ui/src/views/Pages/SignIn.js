@@ -167,7 +167,7 @@ function SignIn() {
                       mb="24px"
                       fontSize="sm"
                       type="text"
-                      placeholder="Your email adress"
+                      placeholder="Your email address"
                       size="md"
                       defaultValue={email}
                       id="uEmail"
